@@ -1,0 +1,160 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.banner
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container
+{
+    position: absolute;
+    left: -10%;
+    width: 120%;
+    height: 100vh;
+    background: radial-gradient(#e1f1e5, #acdabb);
+}
+
+.layer
+{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.layerCont {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10%;
+}
+
+.infoBox {
+    background-color: orange;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 30%;
+    height: 60%;
+    opacity: 0; /* Default opacity */
+    transition: opacity 0.6s linear; /* Transition for smooth effect */
+}
+
+.boxButtons {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    flex-direction: column;
+}
+
+.right {
+    left: 50%;
+}
+
+.center {
+    margin-top: 5%;
+    margin-bottom: 20%;
+    width: 30%;
+    height: 300%;
+    background-image: url('raposa.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.infoButton {
+    background-color: blue;
+    z-index: 1;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 10%;
+    width: 5%;
+    height: 50px;
+    transition: opacity 0.3s ease; /* Transição para opacidade */
+}
+
+.infoButton.hidden {
+    opacity: 0; /* Esconde o botão */
+    pointer-events: none; /* Impede interações enquanto o botão está escondido */
+}
+
+
+.infoButton:hover {
+    background-color: red;
+}
+
+.card {
+    width: 200px;
+    height: 150px;
+    background: rgb(103, 225, 255);
+    transition: all 0.4s;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+    font-size: 30px;
+    font-weight: 900;
+  }
+  
+  .card:hover {
+    border-radius: 50px;
+    cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+    background: rgb(103, 151, 255);
+  }
+  
+  .first-content {
+    height: 100%;
+    width: 100%;
+    transition: all 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    border-radius: 15px;
+  }
+
+  .first-content img {
+    width: 60%;
+    height: 80%;
+  }
+
+  
+  .card:hover .first-content {
+    height: 0px;
+    opacity: 0;
+  }
+  
+  .second-content {
+    height: 0%;
+    width: 100%;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    transition: all 0.4s;
+    font-size: 0px;
+    transform: rotate(90deg) scale(-1);
+    text-align: center;
+  }
+  
+  .card:hover .second-content {
+    opacity: 1;
+    height: 100%;
+    font-size: 1.8rem;
+    transform: rotate(0deg);
+  }
+  

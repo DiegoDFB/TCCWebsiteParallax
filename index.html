@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Fellow Fox: O Brinquedo Inteligente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section class="banner">
+        <div class="boxButtons">
+            <div class="card infoButton" onclick="showInfo('#infoBoxShow1', this)">
+                <div class="first-content">
+                  <img src="pata.png">
+                </div>
+                <div class="second-content">
+              <span>Pata Dianteira Direita</span>
+                </div>
+            </div>
+            <div class="card infoButton" onclick="showInfo('#infoBoxShow3', this)">
+                <div class="first-content">
+                  <img src="pata.png">
+                </div>
+                <div class="second-content">
+              <span>Pata Traseira Direita</span>
+                </div>
+              </div>
+            </div>
+        <div class="boxButtons right">
+            <div class="card infoButton" onclick="showInfo('#infoBoxShow2', this)">
+                <div class="first-content">
+                  <img src="pata.png">
+                </div>
+                <div class="second-content">
+              <span>Pata Dianteira Esquerda</span>
+                </div>
+            </div>
+            <div class="card infoButton" onclick="showInfo('#infoBoxShow4', this)">
+                <div class="first-content">
+                  <img src="pata.png">
+                </div>
+                <div class="second-content">
+              <span>Pata Traseira Esquerda</span>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div id="scene">
+                <div class="layer" data-depth="0.5">
+                    <div class="layerCont">
+                        <div class="center"></div>
+                    </div>
+                </div>
+                <div class="layer" data-depth="0.8">
+                    <div class="layerCont">
+                        <div class="infoBox" id="infoBoxShow1">
+                            <p>Dentro do quiz, o botão do braço direito tem a função de subtrair uma unidade à resposta</p>
+                        </div>
+                        <div class="infoBox" id="infoBoxShow2">
+                            <p>Dentro do quiz, o botão do braço esquerdo tem a função de somar uma unidade à resposta</p>
+                        </div>
+                    </div>
+                    <div class="layerCont">
+                        <div class="infoBox" id="infoBoxShow3">
+                            <p>Ao ligar o brinquedo, o botão da perna esquerda tem a função de iniciar o quiz. <br>
+                                Dentro do quiz, este botão encerra as questões e envia os resultados ao aplicativo.
+                            </p>
+                        </div>
+                        <div class="infoBox" id="infoBoxShow4">
+                            <p>Dentro do quiz, o botão da perna esquerda tem a função de confirmar a resposta inserida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    <script>
+        var scene = document.getElementById('scene');
+        var parallaxInstance = new Parallax(scene);
+        let activeInfoBox = null; // Variável para rastrear a caixa ativa
+        let activeButton = null; // Variável para rastrear o botão ativo
+
+        function showInfo(element, button) {
+            const x = document.querySelector(element);
+
+            // Se houver uma caixa ativa, esconde-a
+            if (activeInfoBox) {
+                activeInfoBox.style.opacity = 0; // Define a opacidade da caixa ativa para 0
+                activeButton.classList.remove('hidden'); // Mostra o botão ativo de volta
+            }
+
+            // Mostra a nova caixa
+            x.style.opacity = 1; 
+            activeInfoBox = x; // Atualiza a referência da caixa ativa
+            activeButton = button; // Atualiza a referência do botão ativo
+            activeButton.classList.add('hidden'); // Esconde o botão que foi clicado
+
+            // Adiciona um evento de clique no documento
+            const closeHandler = function(event) {
+                // Verifica se o clique foi fora da infoBox e dos botões
+                if (!event.target.closest('.infoBox') && !event.target.closest('.infoButton')) {
+                    x.style.opacity = 0; // Define a opacidade da caixa para 0
+                    activeButton.classList.remove('hidden'); // Mostra o botão que estava ativo
+                    activeInfoBox = null; // Limpa a referência da caixa ativa
+                    activeButton = null; // Limpa a referência do botão ativo
+                    document.removeEventListener("click", closeHandler); // Remove o evento
+                }
+            };
+
+            // Ouvinte para fechar a infoBox
+            document.addEventListener("click", closeHandler);
+        }
+    </script>
+</body>
+</html>
